@@ -144,16 +144,21 @@ nav {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--color-light) 0%, var(--color-secondary) 100%);
-  padding: 8rem 2rem 4rem;
+  padding: 10rem 2rem 6rem;
 }
 
 .hero-content {
   max-width: 1400px;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  display: flex;
+  gap: 5rem;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 400px;
 }
 
 .hero-text h1 {
@@ -216,8 +221,11 @@ nav {
 }
 
 .hero-image {
+  flex: 1;
+  min-width: 400px;
   position: relative;
-  height: 600px;
+  aspect-ratio: 1;
+  max-height: 600px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -238,10 +246,32 @@ nav {
 .about-content {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  display: flex;
+  gap: 4rem;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 350px;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 550px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 350px;
 }
 
 .about-text h2 {
@@ -258,20 +288,6 @@ nav {
   color: var(--color-text-light);
   margin-bottom: 1.5rem;
   line-height: 1.8;
-}
-
-.about-image {
-  position: relative;
-  height: 500px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-}
-
-.about-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* Services Section */
@@ -613,8 +629,13 @@ footer {
   }
 
   .hero-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 3rem;
+  }
+
+  .hero-text,
+  .hero-image {
+    min-width: 100%;
   }
 
   .hero-text h1 {
@@ -622,19 +643,21 @@ footer {
   }
 
   .hero-image {
-    height: 400px;
+    max-height: 450px;
   }
 
   .about-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 3rem;
   }
 
-  .about-text h2,
-  .services-header h2,
-  .benefits-content h2,
-  .contact-content h2 {
-    font-size: 2.5rem;
+  .about-image,
+  .about-text {
+    min-width: 100%;
+  }
+
+  .about-image {
+    max-height: 450px;
   }
 
   .services-grid {
@@ -694,11 +717,11 @@ footer {
   }
 
   .hero-image {
-    height: 300px;
+    max-height: 350px;
   }
 
   .about-image {
-    height: 350px;
+    max-height: 400px;
   }
 
   .service-image {
