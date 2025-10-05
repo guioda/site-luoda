@@ -103,7 +103,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.querySelector(this.getAttribute("href"))
 
     if (target) {
-      const headerOffset = 80
+      const headerOffset = 100
       const elementPosition = target.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
@@ -125,13 +125,13 @@ window.addEventListener("load", () => {
 })
 
 // Parallax effect for hero section
-const hero = document.querySelector(".hero")
-
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset
-  const parallaxSpeed = 0.5
-
-  if (hero && scrolled < window.innerHeight) {
-    hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`
-  }
-})
+// const hero = document.querySelector(".hero")
+//
+// window.addEventListener("scroll", () => {
+//   const scrolled = window.pageYOffset
+//   const parallaxSpeed = 0.5
+//
+//   if (hero && scrolled < window.innerHeight) {
+//     hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`
+//   }
+// })

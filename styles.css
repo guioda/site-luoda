@@ -144,21 +144,21 @@ nav {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--color-light) 0%, var(--color-secondary) 100%);
-  padding: 10rem 2rem 6rem;
+  padding: 8rem 2rem 4rem;
 }
 
 .hero-content {
   max-width: 1400px;
   width: 100%;
   display: flex;
-  gap: 5rem;
+  gap: 4rem;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .hero-text {
-  flex: 1;
-  min-width: 400px;
+  flex: 1 1 45%;
+  max-width: 600px;
 }
 
 .hero-text h1 {
@@ -221,11 +221,11 @@ nav {
 }
 
 .hero-image {
-  flex: 1;
-  min-width: 400px;
+  flex: 1 1 45%;
+  max-width: 550px;
   position: relative;
   aspect-ratio: 1;
-  max-height: 600px;
+  max-height: 550px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -239,7 +239,7 @@ nav {
 
 /* About Section */
 .about {
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
   background-color: var(--color-white);
 }
 
@@ -249,12 +249,12 @@ nav {
   display: flex;
   gap: 4rem;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .about-image {
-  flex: 1;
-  min-width: 350px;
+  flex: 1 1 45%;
+  max-width: 500px;
   position: relative;
   aspect-ratio: 4 / 5;
   max-height: 550px;
@@ -270,8 +270,8 @@ nav {
 }
 
 .about-text {
-  flex: 1;
-  min-width: 350px;
+  flex: 1 1 45%;
+  max-width: 600px;
 }
 
 .about-text h2 {
@@ -292,7 +292,7 @@ nav {
 
 /* Services Section */
 .services {
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
   background-color: var(--color-light);
 }
 
@@ -394,7 +394,7 @@ nav {
 
 /* Benefits Section */
 .benefits {
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
   background-color: var(--color-white);
 }
 
@@ -446,7 +446,7 @@ nav {
 
 /* Contact Section */
 .contact {
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
   background-color: var(--color-secondary);
 }
 
@@ -631,13 +631,13 @@ footer {
   .hero-content {
     flex-direction: column;
     gap: 3rem;
+    align-items: center;
   }
 
   .hero-text,
   .hero-image {
-    min-width: 100%;
-    background-image: url(images/woman-567021_640.jpg);
-    background-size: auto;
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
   .hero-text h1 {
@@ -646,16 +646,20 @@ footer {
 
   .hero-image {
     max-height: 450px;
+    background-image: url(images/woman-567021_640.jpg);
+    background-size: auto;
   }
 
   .about-content {
     flex-direction: column;
     gap: 3rem;
+    align-items: center;
   }
 
   .about-image,
   .about-text {
-    min-width: 100%;
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
   .about-image {
@@ -672,7 +676,7 @@ footer {
   .services,
   .benefits,
   .contact {
-    padding: 5rem 1.5rem;
+    padding: 4rem 1.5rem;
   }
 }
 
@@ -711,7 +715,7 @@ footer {
   .services,
   .benefits,
   .contact {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .services-grid {
