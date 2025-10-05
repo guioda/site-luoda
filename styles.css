@@ -304,7 +304,7 @@ nav {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
   gap: 3rem;
 }
 
@@ -325,7 +325,6 @@ nav {
   height: 280px;
   overflow: hidden;
   position: relative;
-  background-image: url(images/massage-5050641_1920.jpg);
 }
 
 .service-image img {
@@ -624,10 +623,6 @@ footer {
 
   .hero-image {
     height: 400px;
-    background-image: url(images/woman-567021_640.jpg);
-    background-size: cover;      /* faz a imagem cobrir todo o bloco */
-    background-position: center; /* centraliza a imagem */
-    background-repeat: no-repeat;/* não repete a imagem */
   }
 
   .about-content {
@@ -644,6 +639,15 @@ footer {
 
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero,
+  .about,
+  .services,
+  .benefits,
+  .contact {
+    padding: 5rem 1.5rem;
   }
 }
 
@@ -675,6 +679,35 @@ footer {
 
   .footer-content {
     grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .about,
+  .services,
+  .benefits,
+  .contact {
+    padding: 4rem 1rem;
+  }
+
+  .services-grid {
+    gap: 1.5rem;
+  }
+
+  .hero-image {
+    height: 300px;
+  }
+
+  .about-image {
+    height: 350px;
+  }
+
+  .service-image {
+    height: 220px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
