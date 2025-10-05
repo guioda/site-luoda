@@ -625,6 +625,9 @@ footer {
   .hero-image {
     height: 400px;
     background-image: url(images/woman-567021_640.jpg);
+    background-size: cover;      /* faz a imagem cobrir todo o bloco */
+    background-position: center; /* centraliza a imagem */
+    background-repeat: no-repeat;/* não repete a imagem */
   }
 
   .about-content {
