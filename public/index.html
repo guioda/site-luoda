@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LuOda Massoterapeuta - Cuide do seu corpo, relaxe sua mente. Massagem relaxante, terapêutica, desportiva, drenagem linfática e liberação miofascial.">
+    <meta name="keywords" content="massoterapia, massagem, relaxamento, bem-estar, saúde, drenagem linfática, massagem terapêutica">
+    <meta name="author" content="LuOda Massoterapeuta">
+    <title>LuOda Massoterapeuta | Bem-estar e Relaxamento</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS Reset e Variáveis ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde-escuro: #2d5a47;
+            --verde-medio: #4a7c59;
+            --verde-claro: #7fb069;
+            --bege: #f5f1eb;
+            --bege-escuro: #e8e0d5;
+            --branco: #ffffff;
+            --marrom: #8b7355;
+            --dourado: #c9a959;
+            --texto: #333333;
+            --texto-claro: #666666;
+            
+            --fonte-titulo: 'Cormorant Garamond', serif;
+            --fonte-corpo: 'Montserrat', sans-serif;
+            
+            --sombra: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --sombra-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transicao: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--texto);
+            background-color: var(--branco);
+        }
+
+        /* ===== Utilitários ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--texto-claro);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-family: var(--fonte-corpo);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: var(--transicao);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--verde-medio);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--verde-escuro);
+            border: 2px solid var(--verde-escuro);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+        }
+
+        /* ===== Header ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--branco);
+            box-shadow: var(--sombra);
+            z-index: 1000;
+            transition: var(--transicao);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .logo:hover {
+            opacity: 0.9;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--texto);
+            text-decoration: none;
+            position: relative;
+            transition: var(--transicao);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--dourado);
+            transition: var(--transicao);
+        }
+
+        .nav-link:hover {
+            color: var(--verde-escuro);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Menu Mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--verde-escuro);
+            border-radius: 3px;
+            transition: var(--transicao);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bege) 0%, var(--branco) 50%, var(--bege-escuro) 100%);
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(127, 176, 105, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--verde-claro);
+            color: var(--branco);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-family: var(--fonte-titulo);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--verde-escuro);
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero-title span {
+            color: var(--dourado);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--texto-claro);
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--sombra-hover);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(145deg, var(--verde-medio), var(--verde-escuro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--dourado);
+            border-radius: 50%;
+            top: -30px;
+            right: -30px;
+            opacity: 0.3;
+        }
+
+        /* ===== Sobre Section ===== */
+        .sobre {
+            background-color: var(--branco);
+        }
+
+        .sobre-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .sobre-image {
+            position: relative;
+        }
+
+        .sobre-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+        }
+
+        .sobre-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(145deg, var(--bege-escuro), var(--bege));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--verde-escuro);
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .sobre-image-wrapper img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .sobre-decoration {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            background-color: var(--dourado);
+            border-radius: 20px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .sobre-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 25px;
+        }
+
+        .sobre-content p {
+            color: var(--texto-claro);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .sobre-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .sobre-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sobre-feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--verde-claro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .sobre-feature span {
+            font-weight: 500;
+            color: var(--texto);
+        }
+
+        /* ===== Serviços Section ===== */
+        .servicos {
+            background-color: var(--bege);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .servico-card {
+            background-color: var(--branco);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .servico-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--verde-escuro), var(--dourado));
+            transform: scaleX(0);
+            transition: var(--transicao);
+        }
+
+        .servico-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .servico-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .servico-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, var(--verde-claro), var(--verde-medio));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--branco);
+        }
+
+        .servico-card h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 15px;
+        }
+
+        .servico-card p {
+            color: var(--texto-claro);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== Benefícios Section ===== */
+        .beneficios {
+            background-color: var(--branco);
+            position: relative;
+        }
+
+        .beneficios-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .beneficios-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 20px;
+        }
+
+        .beneficios-content > p {
+            color: var(--texto-claro);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .beneficio-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: var(--bege);
+            border-radius: 15px;
+            transition: var(--transicao);
+        }
+
+        .beneficio-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--sombra);
+        }
+
+        .beneficio-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(145deg, var(--dourado), var(--marrom));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .beneficio-text h4 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 8px;
+        }
+
+        .beneficio-text p {
+            color: var(--texto-claro);
+            font-size: 0.95rem;
+        }
+
+        .beneficios-image {
+            position: relative;
+        }
+
+        .beneficios-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+        }
+
+        .beneficios-image-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(145deg, var(--verde-claro), var(--verde-escuro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ===== Depoimentos Section ===== */
+        .depoimentos {
+            background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
+            color: var(--branco);
+        }
+
+        .depoimentos .section-title {
+            color: var(--branco);
+        }
+
+        .depoimentos .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .depoimento-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transicao);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .depoimento-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .depoimento-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, var(--dourado), var(--marrom));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--branco);
+        }
+
+        .depoimento-stars {
+            color: var(--dourado);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .depoimento-text {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .depoimento-nome {
+            font-family: var(--fonte-titulo);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .depoimento-info {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== Contato Section ===== */
+        .contato {
+            background-color: var(--bege);
+        }
+
+        .contato-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contato-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 20px;
+        }
+
+        .contato-content > p {
+            color: var(--texto-claro);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .contato-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: var(--branco);
+            border-radius: 15px;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+        }
+
+        .contato-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contato-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(145deg, var(--verde-claro), var(--verde-medio));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .contato-item-content h4 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 5px;
+        }
+
+        .contato-item-content p {
+            color: var(--texto-claro);
+            font-size: 0.95rem;
+        }
+
+        .contato-cta {
+            background-color: var(--branco);
+            border-radius: 25px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: var(--sombra-hover);
+        }
+
+        .contato-cta h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 15px;
+        }
+
+        .contato-cta p {
+            color: var(--texto-claro);
+            margin-bottom: 30px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: var(--branco);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand .logo {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand .logo img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--dourado);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .footer-links a:hover {
+            color: var(--dourado);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== WhatsApp Flutuante ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transicao);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* ===== Responsividade ===== */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .sobre-container,
+            .beneficios-container,
+            .contato-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .servicos-grid,
+            .depoimentos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image-placeholder,
+            .beneficios-image-placeholder {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--branco);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                gap: 25px;
+                box-shadow: var(--sombra);
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: var(--transicao);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .servicos-grid,
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .sobre-features {
+                grid-template-columns: 1fr;
+            }
+
+            .contato-cta {
+                padding: 30px 20px;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .servico-card,
+            .depoimento-card {
+                padding: 30px 20px;
+            }
+
+            .beneficio-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contato-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="#inicio" class="logo">
+                <img src="images/logo.png" alt="LuOda Massoterapeuta">
+            </a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#inicio" class="nav-link">Início</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                    <li><a href="#beneficios" class="nav-link">Benefícios</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">✨ Bem-estar & Relaxamento</span>
+                <h1 class="hero-title">Cuide do seu corpo, <span>relaxe sua mente</span></h1>
+                <p class="hero-subtitle">
+                    Descubra o poder transformador da massoterapia. Tratamentos personalizados 
+                    para aliviar dores, reduzir o estresse e promover o equilíbrio entre 
+                    corpo e mente.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar uma sessão de massoterapia." class="btn btn-primary">Agende sua Sessão</a>
+                    <a href="#servicos" class="btn btn-secondary">Conheça os Serviços</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-placeholder">
+                        🌿<br>Bem-estar & Saúde
+                    </div>
+                </div>
+                <div class="hero-decoration"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section class="sobre section" id="sobre">
+        <div class="container">
+            <div class="sobre-container">
+                <div class="sobre-image">
+                    <div class="sobre-image-wrapper">
+                        <img src="images/massoterapeuta.jpg" alt="Massoterapeuta LuOda - Profissional formada em massoterapia">
+                    </div>
+                    <div class="sobre-decoration"></div>
+                </div>
+                <div class="sobre-content">
+                    <h2>Sobre</h2>
+                    <p>
+                        Nasci com a paixão pelo cuidado e bem-estar. 
+                        Meu compromisso é oferecer tratamentos de qualidade, realizados 
+                        com técnica, dedicação e atenção individualizada a cada cliente.
+                    </p>
+                    <p>
+                        Acredito que a massoterapia vai além do relaxamento — é uma 
+                        ferramenta poderosa para a saúde física e mental. Cada sessão é 
+                        planejada de acordo com suas necessidades específicas, garantindo 
+                        resultados efetivos e duradouros.
+                    </p>
+                    <div class="sobre-features">
+                        <div class="sobre-feature">
+                            <div class="sobre-feature-icon">✓</div>
+                            <span>Atendimento Personalizado</span>
+                        </div>
+                 
+                        <div class="sobre-feature">
+                            <div class="sobre-feature-icon">✓</div>
+                            <span>Profissional Qualificada</span>
+                        </div>
+                        <div class="sobre-feature">
+                            <div class="sobre-feature-icon">✓</div>
+                            <span>Técnicas Atualizadas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section class="servicos section" id="servicos">
+        <div class="container">
+            <h2 class="section-title">Serviços</h2>
+            <p class="section-subtitle">
+                Ofereço uma variedade de técnicas de massoterapia para atender 
+                às suas necessidades específicas
+            </p>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon">🌸</div>
+                    <h3>Massagem Relaxante</h3>
+                    <p>
+                        Técnicas suaves que proporcionam relaxamento profundo, 
+                        aliviando tensões e promovendo sensação de bem-estar e tranquilidade.
+                    </p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">💪</div>
+                    <h3>Massagem Terapêutica</h3>
+                    <p>
+                        Tratamento focado em pontos específicos de tensão e dor, 
+                        utilizando técnicas para aliviar desconfortos musculares.
+                    </p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">🏃</div>
+                    <h3>Massagem Desportiva</h3>
+                    <p>
+                        Ideal para atletas e praticantes de atividades físicas, 
+                        auxiliando na recuperação muscular e prevenção de lesões.
+                    </p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">💧</div>
+                    <h3>Drenagem Linfática</h3>
+                    <p>
+                        Técnica que estimula o sistema linfático, reduzindo 
+                        retenção de líquidos e eliminando toxinas do organismo.
+                    </p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">🎯</div>
+                    <h3>Liberação Miofascial</h3>
+                    <p>
+                        Trabalho profundo nas fáscias musculares, liberando 
+                        aderências e restaurando a mobilidade dos tecidos.
+                    </p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">✨</div>
+                    <h3>Sessão Personalizada</h3>
+                    <p>
+                        Combinação de técnicas adaptadas às suas necessidades, 
+                        criando uma experiência única de tratamento.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section class="beneficios section" id="beneficios">
+        <div class="container">
+            <div class="beneficios-container">
+                <div class="beneficios-content">
+                    <h2>Benefícios da Massoterapia</h2>
+                    <p>
+                        A massoterapia oferece diversos benefícios comprovados para 
+                        a saúde física e mental. Confira como nossas técnicas podem 
+                        transformar sua qualidade de vida.
+                    </p>
+                    <div class="beneficios-lista">
+                        <div class="beneficio-item">
+                            <div class="beneficio-number">1</div>
+                            <div class="beneficio-text">
+                                <h4>Redução do Estresse</h4>
+                                <p>Diminui os níveis de cortisol e promove sensação de calma e relaxamento.</p>
+                            </div>
+                        </div>
+                        <div class="beneficio-item">
+                            <div class="beneficio-number">2</div>
+                            <div class="beneficio-text">
+                                <h4>Alívio de Dores Musculares</h4>
+                                <p>Tratamento eficaz para tensões, contraturas e dores crônicas.</p>
+                            </div>
+                        </div>
+                        <div class="beneficio-item">
+                            <div class="beneficio-number">3</div>
+                            <div class="beneficio-text">
+                                <h4>Melhora da Circulação</h4>
+                                <p>Estimula o fluxo sanguíneo, oxigenando os tecidos e órgãos.</p>
+                            </div>
+                        </div>
+                        <div class="beneficio-item">
+                            <div class="beneficio-number">4</div>
+                            <div class="beneficio-text">
+                                <h4>Bem-estar Físico e Mental</h4>
+                                <p>Equilíbrio entre corpo e mente, melhorando a qualidade de vida.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="beneficios-image">
+                    <div class="beneficios-image-wrapper">
+                        <div class="beneficios-image-placeholder">
+                            🌿<br>Equilíbrio & Harmonia
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section class="depoimentos section" id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O Que Os Clientes Dizem</h2>
+            <p class="section-subtitle">
+                Confira os depoimentos de quem já experimentou meu serviço
+            </p>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="depoimento-avatar">M</div>
+                    <div class="depoimento-stars">★★★★★</div>
+                    <p class="depoimento-text">
+                        "Encontrei o cuidado que precisava. As sessões de 
+                        massagem relaxante me ajudaram muito a lidar com o estresse 
+                        do dia a dia. Super recomendo!"
+                    </p>
+                    <h4 class="depoimento-nome">Marina Oliveira</h4>
+                    <span class="depoimento-info">Cliente há 6 meses</span>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-avatar">R</div>
+                    <div class="depoimento-stars">★★★★★</div>
+                    <p class="depoimento-text">
+                        "Sofria com dores nas costas há anos. Depois de iniciar o 
+                        tratamento com massagem terapêutica, minha qualidade de vida 
+                        melhorou muito. Profissional incrível!"
+                    </p>
+                    <h4 class="depoimento-nome">Roberto Santos</h4>
+                    <span class="depoimento-info">Cliente há 1 ano</span>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-avatar">C</div>
+                    <div class="depoimento-stars">★★★★★</div>
+                    <p class="depoimento-text">
+                        "A drenagem linfática fez toda diferença no meu pós-operatório. 
+                        Atendimento humanizado e ambiente muito acolhedor. Gratidão!"
+                    </p>
+                    <h4 class="depoimento-nome">Carla Ferreira</h4>
+                    <span class="depoimento-info">Cliente há 3 meses</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section class="contato section" id="contato">
+        <div class="container">
+            <div class="contato-container">
+                <div class="contato-content">
+                    <h2>Entre em Contato</h2>
+                    <p>
+                        Estou pronta para atender você! Entre em contato para 
+                        agendar sua sessão ou tirar dúvidas.
+                    </p>
+                    <div class="contato-info">
+                        <div class="contato-item">
+                            <div class="contato-icon">📱</div>
+                            <div class="contato-item-content">
+                                <h4>WhatsApp</h4>
+                                <p>(41) 00000-0000</p>
+                            </div>
+                        </div>
+                        <div class="contato-item">
+                            <div class="contato-icon">📞</div>
+                            <div class="contato-item-content">
+                                <h4>Telefone</h4>
+                                <p>(00) 0000-0000</p>
+                            </div>
+                        </div>
+                        <div class="contato-item">
+                            <div class="contato-icon">📍</div>
+                            <div class="contato-item-content">
+                                <h4>Localização</h4>
+                                <p>Curitiba - Paraná</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contato-cta">
+                    <h3>Agende Sua Sessão</h3>
+                    <p>
+                        Clique no botão abaixo e fale diretamente comigo pelo 
+                        WhatsApp. Resposta rápida garantida!
+                    </p>
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar uma sessão de massoterapia." class="btn btn-whatsapp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Chamar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+<a href="#inicio" class="logo">
+                <img src="images/logo.png" alt="LuOda Massoterapia">
+            </a>
+                    <p>
+                        Cuidando do seu bem-estar com carinho e profissionalismo. 
+                        Agende sua sessão e descubra os benefícios da massoterapia 
+                        para sua saúde física e mental.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#beneficios">Benefícios</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Massagem Relaxante</a></li>
+                        <li><a href="#servicos">Massagem Terapêutica</a></li>
+                        <li><a href="#servicos">Massagem Desportiva</a></li>
+                        <li><a href="#servicos">Drenagem Linfática</a></li>
+                        <li><a href="#servicos">Liberação Miofascial</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Feito por Guilherme Massayuki Oda – Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de saber mais sobre os serviços de massoterapia." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contato via WhatsApp">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== Menu Mobile Toggle =====
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ===== Header com sombra no scroll =====
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
+        // ===== Animação de scroll suave para links internos =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== Animação de entrada dos elementos =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplica a animação aos cards de serviços e depoimentos
+        document.querySelectorAll('.servico-card, .depoimento-card, .beneficio-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
