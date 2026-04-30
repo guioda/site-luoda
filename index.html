@@ -1096,6 +1096,7 @@
       .testimonials-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="chat-style.css">
 </head>
 <body>
 
@@ -1667,7 +1668,22 @@
 
 
 <script>
-  /* Header scroll */
+</script>
+
+<!-- Chat widget -->
+<div id="chatWidget" class="chat-widget" aria-live="polite">
+  <button id="chatToggle" class="chat-toggle" aria-label="Abrir chat">Chat</button>
+  <div id="chatPanel" class="chat-panel" hidden>
+    <div class="chat-header">Chat de respostas</div>
+    <div id="chatMessages" class="chat-messages" role="log" aria-live="polite"></div>
+    <form id="chatForm" class="chat-form">
+      <input id="chatInput" type="text" placeholder="Escreva sua pergunta..." autocomplete="off" required />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script src="chat.js"></script>
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 55);
