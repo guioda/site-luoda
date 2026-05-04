@@ -1,1510 +1,1744 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LuOda Massoterapeuta - Cuide do seu corpo, relaxe sua mente. Massagem relaxante, terapêutica, desportiva, drenagem linfática e liberação miofascial.">
-    <meta name="keywords" content="massoterapia, massagem, relaxamento, bem-estar, saúde, drenagem linfática, massagem terapêutica">
-    <meta name="author" content="LuOda Massoterapeuta">
-    <title>LuOda Massoterapeuta | Bem-estar e Relaxamento</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ===== CSS Reset e Variáveis ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --verde-escuro: #2d5a47;
-            --verde-medio: #4a7c59;
-            --verde-claro: #7fb069;
-            --bege: #f5f1eb;
-            --bege-escuro: #e8e0d5;
-            --branco: #ffffff;
-            --marrom: #8b7355;
-            --dourado: #c9a959;
-            --texto: #333333;
-            --texto-claro: #666666;
-            
-            --fonte-titulo: 'Cormorant Garamond', serif;
-            --fonte-corpo: 'Montserrat', sans-serif;
-            
-            --sombra: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --sombra-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --transicao: all 0.3s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--fonte-corpo);
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--texto);
-            background-color: var(--branco);
-        }
-
-        /* ===== Utilitários ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--texto-claro);
-            font-size: 1.1rem;
-            margin-bottom: 50px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            font-family: var(--fonte-corpo);
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: var(--transicao);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--verde-escuro);
-            color: var(--branco);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--verde-medio);
-            transform: translateY(-2px);
-            box-shadow: var(--sombra-hover);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--verde-escuro);
-            border: 2px solid var(--verde-escuro);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--verde-escuro);
-            color: var(--branco);
-        }
-
-        /* ===== Header ===== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: var(--branco);
-            box-shadow: var(--sombra);
-            z-index: 1000;
-            transition: var(--transicao);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: var(--transicao);
-        }
-
-        .logo:hover {
-            opacity: 0.9;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        .nav-link {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--texto);
-            text-decoration: none;
-            position: relative;
-            transition: var(--transicao);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--dourado);
-            transition: var(--transicao);
-        }
-
-        .nav-link:hover {
-            color: var(--verde-escuro);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Menu Mobile */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: var(--verde-escuro);
-            border-radius: 3px;
-            transition: var(--transicao);
-        }
-
-        /* ===== Hero Section ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--bege) 0%, var(--branco) 50%, var(--bege-escuro) 100%);
-            padding-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(ellipse, rgba(127, 176, 105, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            z-index: 1;
-        }
-   .hero-image-wrapper {
-    width: 100%;
-    max-width: 520px;
-    height: 420px;
-    overflow: hidden;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.hero-image-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 70%;
-}
-        .hero-badge {
-            display: inline-block;
-            background-color: var(--verde-claro);
-            color: var(--branco);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-
-        .hero-title {
-            font-family: var(--fonte-titulo);
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--verde-escuro);
-            line-height: 1.2;
-            margin-bottom: 25px;
-        }
-
-        .hero-title span {
-            color: var(--dourado);
-        }
-
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--texto-claro);
-            margin-bottom: 35px;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-image {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: var(--sombra-hover);
-        }
-
-        .hero-image-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .hero-image-placeholder {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(145deg, var(--verde-medio), var(--verde-escuro));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            font-family: var(--fonte-titulo);
-            font-size: 1.5rem;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .hero-decoration {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 3px solid var(--dourado);
-            border-radius: 50%;
-            top: -30px;
-            right: -30px;
-            opacity: 0.3;
-        }
-
-        /* ===== Sobre Section ===== */
-        .sobre {
-            background-color: var(--branco);
-        }
-
-        .sobre-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .sobre-image {
-            position: relative;
-        }
-
-        .sobre-image-wrapper {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--sombra);
-        }
-
-        .sobre-image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(145deg, var(--bege-escuro), var(--bege));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--verde-escuro);
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .sobre-image-wrapper img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-        }
-
-        .sobre-decoration {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            width: 100px;
-            height: 100px;
-            background-color: var(--dourado);
-            border-radius: 20px;
-            opacity: 0.2;
-            z-index: -1;
-        }
-
-        .sobre-content h2 {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            margin-bottom: 25px;
-        }
-
-        .sobre-content p {
-            color: var(--texto-claro);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .sobre-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .sobre-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sobre-feature-icon {
-            width: 40px;
-            height: 40px;
-            background-color: var(--verde-claro);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .sobre-feature span {
-            font-weight: 500;
-            color: var(--texto);
-        }
-
-        /* ===== Serviços Section ===== */
-        .servicos {
-            background-color: var(--bege);
-        }
-
-        .servicos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .servico-card {
-            background-color: var(--branco);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--sombra);
-            transition: var(--transicao);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .servico-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--verde-escuro), var(--dourado));
-            transform: scaleX(0);
-            transition: var(--transicao);
-        }
-
-        .servico-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--sombra-hover);
-        }
-
-        .servico-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .servico-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(145deg, var(--verde-claro), var(--verde-medio));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-            color: var(--branco);
-        }
-
-        .servico-card h3 {
-            font-family: var(--fonte-titulo);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            margin-bottom: 15px;
-        }
-
-        .servico-card p {
-            color: var(--texto-claro);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ===== Benefícios Section ===== */
-        .beneficios {
-            background-color: var(--branco);
-            position: relative;
-        }
-
-        .beneficios-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .beneficios-content h2 {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            margin-bottom: 20px;
-        }
-
-        .beneficios-content > p {
-            color: var(--texto-claro);
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .beneficio-item {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding: 25px;
-            background-color: var(--bege);
-            border-radius: 15px;
-            transition: var(--transicao);
-        }
-
-        .beneficio-item:hover {
-            transform: translateX(10px);
-            box-shadow: var(--sombra);
-        }
-
-        .beneficio-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(145deg, var(--dourado), var(--marrom));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .beneficio-text h4 {
-            font-family: var(--fonte-titulo);
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            margin-bottom: 8px;
-        }
-
-        .beneficio-text p {
-            color: var(--texto-claro);
-            font-size: 0.95rem;
-        }
-
-        .beneficios-image {
-            position: relative;
-        }
-
-        .beneficios-image-wrapper {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--sombra);
-        }
-
-        .beneficios-image-placeholder {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(145deg, var(--verde-claro), var(--verde-escuro));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* ===== Depoimentos Section ===== */
-        .depoimentos {
-            background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
-            color: var(--branco);
-        }
-
-        .depoimentos .section-title {
-            color: var(--branco);
-        }
-
-        .depoimentos .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .depoimentos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .depoimento-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transicao);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .depoimento-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .depoimento-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(145deg, var(--dourado), var(--marrom));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-family: var(--fonte-titulo);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--branco);
-        }
-
-        .depoimento-stars {
-            color: var(--dourado);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            letter-spacing: 3px;
-        }
-
-        .depoimento-text {
-            font-style: italic;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .depoimento-nome {
-            font-family: var(--fonte-titulo);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .depoimento-info {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* ===== Contato Section ===== */
-        .contato {
-            background-color: var(--bege);
-        }
-
-        .contato-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .contato-content h2 {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            margin-bottom: 20px;
-        }
-
-        .contato-content > p {
-            color: var(--texto-claro);
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .contato-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contato-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: var(--branco);
-            border-radius: 15px;
-            box-shadow: var(--sombra);
-            transition: var(--transicao);
-        }
-
-        .contato-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contato-icon {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(145deg, var(--verde-claro), var(--verde-medio));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
-
-        .contato-item-content h4 {
-            font-family: var(--fonte-titulo);
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            margin-bottom: 5px;
-        }
-
-        .contato-item-content p {
-            color: var(--texto-claro);
-            font-size: 0.95rem;
-        }
-
-        .contato-cta {
-            background-color: var(--branco);
-            border-radius: 25px;
-            padding: 50px;
-            text-align: center;
-            box-shadow: var(--sombra-hover);
-        }
-
-        .contato-cta h3 {
-            font-family: var(--fonte-titulo);
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-            margin-bottom: 15px;
-        }
-
-        .contato-cta p {
-            color: var(--texto-claro);
-            margin-bottom: 30px;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: var(--branco);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-            transform: translateY(-2px);
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            background-color: var(--verde-escuro);
-            color: var(--branco);
-            padding: 60px 0 30px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 50px;
-        }
-
-        .footer-brand .logo {
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .footer-brand .logo img {
-            height: 80px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .footer-social a {
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            text-decoration: none;
-            transition: var(--transicao);
-        }
-
-        .footer-social a:hover {
-            background-color: var(--dourado);
-            transform: translateY(-3px);
-        }
-
-        .footer-links h4 {
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transicao);
-        }
-
-        .footer-links a:hover {
-            color: var(--dourado);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        /* ===== WhatsApp Flutuante ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            font-size: 1.8rem;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            transition: var(--transicao);
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* ===== Responsividade ===== */
-        @media (max-width: 1024px) {
-            .hero-container,
-            .sobre-container,
-            .beneficios-container,
-            .contato-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .servicos-grid,
-            .depoimentos-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            .hero-image-placeholder,
-            .beneficios-image-placeholder {
-                height: 350px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: var(--branco);
-                flex-direction: column;
-                align-items: center;
-                padding: 30px 0;
-                gap: 25px;
-                box-shadow: var(--sombra);
-                transform: translateY(-150%);
-                opacity: 0;
-                transition: var(--transicao);
-            }
-
-            .nav-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
-            }
-
-            .servicos-grid,
-            .depoimentos-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .footer-social {
-                justify-content: center;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                text-align: center;
-            }
-
-            .sobre-features {
-                grid-template-columns: 1fr;
-            }
-
-            .contato-cta {
-                padding: 30px 20px;
-            }
-
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.7rem;
-            }
-
-            .servico-card,
-            .depoimento-card {
-                padding: 30px 20px;
-            }
-
-            .beneficio-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .contato-item {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LuOda Massoterapeuta — Massoterapia profissional em Curitiba. Massagem relaxante, terapêutica, drenagem linfática, liberação miofascial e Shiatsu. Agende já!" />
+  <meta name="keywords" content="massoterapia, massagem, relaxamento, bem-estar, saúde, drenagem linfática, Curitiba, Paraná" />
+  <meta name="author" content="LuOda Massoterapeuta" />
+  <meta property="og:title" content="LuOda Massoterapeuta — Massoterapia Profissional em Curitiba" />
+  <meta property="og:description" content="Sessões personalizadas que aliviam tensões, restauram o equilíbrio e promovem bem-estar duradouro." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.luodamassoterapeuta.com.br" />
+  <title>LuOda Massoterapeuta | Massoterapia Profissional em Curitiba</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────
+       TOKENS & RESET
+    ───────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:          #faf8f4;
+      --bg-warm:     #f2ebe0;
+      --dark:        #1a2918;
+      --dark-mid:    #2c4530;
+      --primary:     #3a6645;
+      --sage:        #6b9175;
+      --accent:      #c5933a;
+      --accent-lt:   #e0b870;
+      --sand:        #ddd3c0;
+      --text:        #222222;
+      --text-mid:    #575757;
+      --text-light:  #999999;
+      --white:       #ffffff;
+      --border:      rgba(0,0,0,0.07);
+
+      --f-display:   'Playfair Display', Georgia, serif;
+      --f-sans:      'DM Sans', system-ui, sans-serif;
+
+      --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+      --max-w:       1280px;
+      --gutter:      clamp(1.25rem, 5vw, 4rem);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--f-sans);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ─────────────────────────────────────────
+       UTILITIES
+    ───────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--f-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.45s; }
+
+    /* ─────────────────────────────────────────
+       HEADER
+    ───────────────────────────────────────── */
+    #header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 1.4rem var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+    #header.scrolled {
+      background: rgba(250, 248, 244, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 1rem var(--gutter);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .header-logo { height: 42px; width: auto; }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+    }
+    .nav-link {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s var(--ease-out);
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1.35rem;
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .header-cta:hover { background: var(--primary); transform: translateY(-1px); }
+
+    /* Mobile toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+      z-index: 200;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--dark);
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    /* Full-screen mobile menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.25rem;
+      z-index: 150;
+      transform: translateX(100%);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+
+    .mobile-nav-link {
+      font-family: var(--f-display);
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .mobile-nav-link:hover { color: var(--accent-lt); }
+
+    .mobile-menu-footer {
+      position: absolute;
+      bottom: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .mobile-social {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+    .mobile-social:hover { color: var(--accent-lt); }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem var(--gutter) 4rem clamp(1.5rem, 8vw, 7rem);
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.38rem 1rem 0.38rem 0.55rem;
+      background: var(--bg-warm);
+      border: 1px solid var(--sand);
+      border-radius: 100px;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      margin-bottom: 1.75rem;
+      width: fit-content;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-family: var(--f-display);
+      font-size: clamp(3rem, 5.2vw, 5.4rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--dark);
+      margin-bottom: 1.4rem;
+    }
+    .hero-title em { font-style: italic; color: var(--primary); }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 0.875rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.875rem;
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 41, 24, 0.22);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--sand);
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover {
+      border-color: var(--dark);
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    /* Hero image column */
+    .hero-image-col {
+      position: relative;
+      height: 100%;
+      min-height: 560px;
+      overflow: hidden;
+    }
+    .hero-image-col img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(26,41,24,0.12) 0%, transparent 55%);
+      z-index: 1;
+    }
+
+    /* Floating stat card */
+    .hero-stat-card {
+      position: absolute;
+      bottom: 2.5rem;
+      left: -2rem;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.11);
+      z-index: 2;
+      min-width: 200px;
+    }
+    .hero-stat-num {
+      font-family: var(--f-display);
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 0.15rem;
+    }
+    .hero-stat-plus { font-size: 1.2rem; color: var(--accent); font-weight: 600; }
+    .hero-stat-label { font-size: 0.78rem; color: var(--text-light); margin-top: 0.3rem; }
+
+    /* ─────────────────────────────────────────
+       MARQUEE
+    ───────────────────────────────────────── */
+    .marquee-section {
+      background: var(--dark);
+      padding: 0.95rem 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 2.5rem;
+      animation: marqueeScroll 32s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      white-space: nowrap;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .marquee-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────── */
+    .about-section {
+      padding: clamp(5rem, 10vw, 9rem) var(--gutter);
+    }
+    .about-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-main {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+    }
+    .about-badge-pill {
+      position: absolute;
+      top: 2rem;
+      left: -1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 6px 20px rgba(197,147,58,0.35);
+    }
+    .about-image-inset {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 44%;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      border: 5px solid var(--bg);
+      overflow: hidden;
+      background: var(--bg-warm);
+    }
+    .about-image-inset img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .about-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+    }
+    .about-heading em { font-style: italic; color: var(--primary); }
+
+    .about-text {
+      font-size: 0.97rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    .about-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .about-check {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .check-icon {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sage), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--f-display);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin-top: 0.25rem;
+    }
+
+    /* ─────────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────────── */
+    .services-section {
+      background: var(--dark);
+      padding: clamp(5rem, 10vw, 9rem) var(--gutter);
+      position: relative;
+      overflow: hidden;
+    }
+    .services-watermark {
+      position: absolute;
+      top: -1.5rem;
+      right: -1rem;
+      font-family: var(--f-display);
+      font-size: clamp(7rem, 17vw, 17rem);
+      font-weight: 700;
+      color: rgba(255,255,255,0.018);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .services-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .services-section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-lt);
+    }
+    .services-section-label::before {
+      content: '';
+      display: block;
+      width: 2rem; height: 1px;
+      background: currentColor;
+    }
+    .services-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2.1rem, 3.8vw, 3.8rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-top: 0.75rem;
+    }
+    .services-heading em { font-style: italic; color: var(--accent-lt); }
+
+    .services-subtext {
+      max-width: 36ch;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      flex-shrink: 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.038);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 1.875rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.35s, border-color 0.35s, transform 0.35s var(--ease-out);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(197,147,58,0.07) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,0.065);
+      border-color: rgba(197,147,58,0.22);
+      transform: translateY(-4px);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-num {
+      font-family: var(--f-display);
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.038);
+      line-height: 1;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.03em;
+    }
+    .service-icon {
+      width: 42px; height: 42px;
+      border-radius: 11px;
+      background: rgba(197,147,58,0.1);
+      border: 1px solid rgba(197,147,58,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .service-title {
+      font-family: var(--f-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .service-desc {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.44);
+      line-height: 1.72;
+    }
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.25rem;
+      padding: 0.28rem 0.8rem;
+      background: rgba(197,147,58,0.1);
+      border: 1px solid rgba(197,147,58,0.18);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      color: var(--accent-lt);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─────────────────────────────────────────
+       BENEFITS
+    ───────────────────────────────────────── */
+    .benefits-section {
+      padding: clamp(5rem, 10vw, 9rem) var(--gutter);
+    }
+    .benefits-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+
+    .benefits-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0.75rem 0 2.5rem;
+    }
+    .benefits-heading em { font-style: italic; color: var(--primary); }
+
+    .benefit-list { display: flex; flex-direction: column; }
+
+    .benefit-item {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr;
+      gap: 1.1rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .benefit-item:first-child { padding-top: 0; }
+
+    .benefit-num {
+      font-family: var(--f-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      padding-top: 0.1rem;
+    }
+    .benefit-title {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+    .benefit-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.72;
+    }
+
+    .benefits-image-col { position: relative; }
+    .benefits-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    .benefits-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: -1.75rem;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.1rem 1.4rem;
+      box-shadow: 0 14px 44px rgba(0,0,0,0.09);
+    }
+    .badge-num {
+      font-family: var(--f-display);
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .badge-stars {
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      margin: 0.25rem 0 0.2rem;
+    }
+    .badge-note { font-size: 0.72rem; color: var(--text-light); }
+
+    /* ─────────────────────────────────────────
+       TESTIMONIALS
+    ───────────────────────────────────────── */
+    .testimonials-section {
+      background: var(--bg-warm);
+      padding: clamp(5rem, 10vw, 9rem) var(--gutter);
+    }
+    .testimonials-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .testimonials-heading {
+      font-family: var(--f-display);
+      font-size: clamp(1.9rem, 3.2vw, 3.2rem);
+      font-weight: 500;
+      color: var(--dark);
+      margin-top: 0.75rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .testimonials-heading em { font-style: italic; color: var(--primary); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .tcard {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.875rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      transition: transform 0.35s var(--ease-out), box-shadow 0.35s;
+    }
+    .tcard:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+    }
+    .tcard-stars { color: var(--accent); font-size: 0.8rem; letter-spacing: 3px; }
+    .tcard-text {
+      font-family: var(--f-display);
+      font-size: 1.02rem;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.62;
+      flex: 1;
+    }
+    .tcard-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .tcard-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sage), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--white);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .tcard-name {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .tcard-tenure { font-size: 0.75rem; color: var(--text-light); }
+
+    /* ─────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────── */
+    .contact-section {
+      background: var(--dark);
+      padding: clamp(5rem, 10vw, 9rem) var(--gutter);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(197,147,58,0.055);
+      pointer-events: none;
+    }
+    .contact-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+      position: relative;
+    }
+
+    .contact-section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-lt);
+    }
+    .contact-section-label::before {
+      content: '';
+      display: block;
+      width: 2rem; height: 1px;
+      background: currentColor;
+    }
+    .contact-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2.1rem, 3.8vw, 3.8rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.022em;
+      margin: 0.875rem 0 1.4rem;
+    }
+    .contact-heading em { font-style: italic; color: var(--accent-lt); }
+    .contact-text {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.8;
+      max-width: 44ch;
+      margin-bottom: 2.25rem;
+    }
+    .contact-btns { display: flex; flex-direction: column; gap: 0.875rem; }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.95rem 1.875rem;
+      background: #25D366;
+      color: var(--white);
+      border-radius: 100px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      width: fit-content;
+    }
+    .btn-whatsapp:hover {
+      background: #1fba5a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.32);
+    }
+    .btn-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.95rem 1.875rem;
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+      border: 1.5px solid rgba(255,255,255,0.13);
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.25s;
+      width: fit-content;
+    }
+    .btn-instagram:hover {
+      border-color: rgba(255,255,255,0.38);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .contact-cards { display: flex; flex-direction: column; gap: 0.875rem; }
+    .contact-card {
+      background: rgba(255,255,255,0.042);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 1.1rem 1.375rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-card-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(197,147,58,0.1);
+      border: 1px solid rgba(197,147,58,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-card-lbl {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 0.18rem;
+    }
+    .contact-card-val {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      background: #0e1810;
+      padding: 2.75rem var(--gutter);
+    }
+    .footer-top {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-logo { height: 34px; filter: brightness(0) invert(1) opacity(0.55); }
+    .footer-links {
+      display: flex;
+      gap: 1.875rem;
+      flex-wrap: wrap;
+    }
+    .footer-link {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: rgba(255,255,255,0.65); }
+    .footer-bottom {
+      max-width: var(--max-w);
+      margin: 1.4rem auto 0;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.055);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 0.73rem; color: rgba(255,255,255,0.22); }
+    .footer-dev { font-size: 0.73rem; color: rgba(255,255,255,0.18); transition: color 0.2s; }
+    .footer-dev:hover { color: rgba(255,255,255,0.48); }
+
+    /* ─────────────────────────────────────────
+       FLOATING WHATSAPP
+    ───────────────────────────────────────── */
+    .float-wa {
+      position: fixed;
+      bottom: 1.875rem;
+      right: 1.875rem;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.42);
+      z-index: 90;
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+    }
+    .float-wa:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.52);
+    }
+    .float-wa::before {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      background: rgba(37,211,102,0.18);
+      animation: waPulse 2.5s ease-out infinite;
+    }
+    @keyframes waPulse {
+      0%   { transform: scale(0.9); opacity: 0.85; }
+      70%  { transform: scale(1.35); opacity: 0; }
+      100% { transform: scale(0.9); opacity: 0; }
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content {
+        padding: 5.5rem var(--gutter) 3rem;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-subtitle { max-width: 54ch; text-align: center; }
+      .hero-image-col { min-height: 420px; height: 50svh; }
+      .hero-stat-card { left: 1rem; }
+
+      .about-inner,
+      .benefits-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image-inset { display: none; }
+      .about-badge-pill { left: 1rem; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .header-nav, .header-cta { display: none; }
+      .menu-toggle { display: flex; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+
+      .footer-top { flex-direction: column; align-items: flex-start; }
+      .footer-links { display: none; }
+      .services-header { flex-direction: column; }
+
+      .benefits-image-col { order: -1; }
+      .benefits-badge { left: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.6rem; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="chat-style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="header-container">
-            <a href="#inicio" class="logo">
-                <img src="images/logo.png" alt="LuOda Massoterapeuta">
-            </a>
-            <nav>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#inicio" class="nav-link">Início</a></li>
-                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
-                    <li><a href="#beneficios" class="nav-link">Benefícios</a></li>
-                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
-                </ul>
-            </nav>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero-container">
-            <div class="hero-content">
-                <span class="hero-badge">✨ Bem-estar & Relaxamento</span>
-                <h1 class="hero-title">Cuide do seu corpo, <span>relaxe sua mente</span></h1>
-                <p class="hero-subtitle">
-                    Descubra o poder transformador da massagem. Tratamentos personalizados 
-                    para aliviar dores, reduzir o estresse e promover o equilíbrio entre 
-                    corpo e mente.
-                </p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/5541987890037?text=Olá! Gostaria de agendar uma sessão de massagem." class="btn btn-primary">Agende sua Sessão</a>
-                    <a href="#servicos" class="btn btn-secondary">Conheça os Serviços</a>
-                </div>
-            </div>
-          <div class="hero-image">
-    <div class="sobre-image">
-                    <div class="sobre-image-wrapper">
-                        <img src="images/ChatGPT Image 27 de jan. de 2026, 17_10_36.png" alt="Massoterapeuta LuOda - Profissional formada em massoterapia">
-                    </div>
-                    <div class="sobre-decoration"></div>
-                </div>
-                
-    <div class="hero-decoration"></div>
+<!-- ══════════════════════════════════
+     HEADER
+══════════════════════════════════ -->
+<header id="header">
+  <a href="#inicio" aria-label="LuOda Massoterapeuta — Início">
+    <img src="images/logo.png" alt="LuOda Massoterapeuta" class="header-logo" />
+  </a>
+
+  <nav class="header-nav" aria-label="Navegação principal">
+    <a href="#sobre"       class="nav-link">Sobre</a>
+    <a href="#servicos"    class="nav-link">Serviços</a>
+    <a href="#beneficios"  class="nav-link">Benefícios</a>
+    <a href="#depoimentos" class="nav-link">Depoimentos</a>
+    <a href="#contato"     class="nav-link">Contato</a>
+  </nav>
+
+  <a
+    href="https://wa.me/5541987890037?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o."
+    target="_blank" rel="noopener noreferrer"
+    class="header-cta" aria-label="Agendar via WhatsApp"
+  >
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Agendar Agora
+  </a>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+  <a href="#sobre"       class="mobile-nav-link">Sobre</a>
+  <a href="#servicos"    class="mobile-nav-link">Serviços</a>
+  <a href="#beneficios"  class="mobile-nav-link">Benefícios</a>
+  <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
+  <a href="#contato"     class="mobile-nav-link">Contato</a>
+  <div class="mobile-menu-footer">
+    <a href="https://instagram.com/luoda38" target="_blank" rel="noopener noreferrer" class="mobile-social">Instagram</a>
+    <span style="color:rgba(255,255,255,.15)">·</span>
+    <a href="https://wa.me/5541987890037" target="_blank" rel="noopener noreferrer" class="mobile-social">WhatsApp</a>
+  </div>
 </div>
-        </div>
-    </section>
 
-    <!-- Sobre Section -->
-    <section class="sobre section" id="sobre">
-        <div class="container">
-            <div class="sobre-container">
-                <div class="sobre-image">
-                    <div class="sobre-image-wrapper">
-                        <img src="images/massoterapeuta.jpg" alt="Massoterapeuta LuOda - Profissional formada em massoterapia">
-                    </div>
-                    <div class="sobre-decoration"></div>
-                </div>
-                <div class="sobre-content">
-                    <h2>Sobre</h2>
-                    <p>
-                        Nasci com a paixão pelo cuidado e bem-estar. 
-                        Meu compromisso é oferecer tratamentos de qualidade, realizados 
-                        com técnica, dedicação e atenção individualizada a cada cliente.
-                    </p>
-                    <p>
-                        Acredito que a massoterapia vai além do relaxamento — é uma 
-                        ferramenta poderosa para a saúde física e mental. Cada sessão é 
-                        planejada de acordo com suas necessidades específicas, garantindo 
-                        resultados efetivos e duradouros.
-                    </p>
-                    <div class="sobre-features">
-                        <div class="sobre-feature">
-                            <div class="sobre-feature-icon">✓</div>
-                            <span>Atendimento Personalizado</span>
-                        </div>
-                 
-                        <div class="sobre-feature">
-                            <div class="sobre-feature-icon">✓</div>
-                            <span>Profissional Qualificada</span>
-                        </div>
-                        <div class="sobre-feature">
-                            <div class="sobre-feature-icon">✓</div>
-                            <span>Técnicas Atualizadas</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Serviços Section -->
-    <section class="servicos section" id="servicos">
-        <div class="container">
-            <h2 class="section-title">Serviços</h2>
-            <p class="section-subtitle">
-                Ofereço uma variedade de técnicas de massoterapia para atender 
-                às suas necessidades específicas
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="inicio" aria-label="Seção principal">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="hero-badge-dot"></span>
+        Massoterapia Profissional · Curitiba — PR
+      </div>
+
+      <h1 class="hero-title reveal delay-1">
+        Cuide do<br />
+        seu corpo,<br />
+        <em>relaxe a mente</em>
+      </h1>
+
+      <p class="hero-subtitle reveal delay-2">
+        Sessões personalizadas que aliviam tensões, restauram
+        o equilíbrio e promovem bem-estar duradouro.
+      </p>
+
+      <div class="hero-actions reveal delay-3">
+        <a
+          href="https://wa.me/5541987890037?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o."
+          target="_blank" rel="noopener noreferrer"
+          class="btn-primary"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar Sessão
+        </a>
+        <a href="#servicos" class="btn-ghost">
+          Ver Serviços
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image-col">
+      <img
+        src="images/ChatGPT Image 27 de jan. de 2026, 17_10_36.png"
+        alt="Sessão de massoterapia profissional"
+        loading="eager"
+      />
+      <div class="hero-image-overlay"></div>
+      <div class="hero-stat-card reveal delay-2">
+        <div class="hero-stat-num">500<span class="hero-stat-plus">+</span></div>
+        <div class="hero-stat-label">Clientes Atendidos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     MARQUEE
+══════════════════════════════════ -->
+<div class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Massagem Relaxante</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Drenagem Linfática</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Massagem Terapêutica</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Liberação Miofascial</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Quick Massage</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Shiatsu</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Bem-estar & Saúde</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Massagem Relaxante</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Drenagem Linfática</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Massagem Terapêutica</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Liberação Miofascial</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Quick Massage</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Shiatsu</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Bem-estar & Saúde</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     ABOUT
+══════════════════════════════════ -->
+<section id="sobre" class="about-section" aria-labelledby="sobre-heading">
+  <div class="about-inner">
+
+    <div class="about-image-wrap reveal">
+      <img
+        src="images/massoterapeuta.jpg"
+        alt="Lu Oda — Massoterapeuta profissional"
+        class="about-image-main"
+      />
+      <span class="about-badge-pill">✦ Profissional Certificada</span>
+      <div class="about-image-inset">
+        <img
+          src="images/ChatGPT Image 27 de jan. de 2026, 18_01_00.png"
+          alt="Técnica de massoterapia"
+        />
+      </div>
+    </div>
+
+    <div class="about-content">
+      <p class="section-label reveal">Sobre Mim</p>
+      <h2 class="about-heading reveal delay-1" id="sobre-heading">
+        Dedicada ao seu<br /><em>bem-estar completo</em>
+      </h2>
+      <p class="about-text reveal delay-2">
+        Sou a Lu, massoterapeuta especializada em técnicas que unem ciência e cuidado.
+        Minha missão é proporcionar sessões que vão além do relaxamento — tratamentos
+        que restauram, equilibram e revitalizam corpo e mente.
+      </p>
+      <p class="about-text reveal delay-2">
+        Com formação especializada e atualização constante nas mais modernas técnicas
+        de massoterapia, ofereço atendimento personalizado para cada cliente,
+        respeitando suas necessidades e objetivos individuais.
+      </p>
+
+      <div class="about-checks reveal delay-3">
+        <div class="about-check">
+          <div class="check-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Atendimento Personalizado e Exclusivo
+        </div>
+        <div class="about-check">
+          <div class="check-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Profissional Certificada e Qualificada
+        </div>
+        <div class="about-check">
+          <div class="check-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Técnicas Modernas e Atualizadas
+        </div>
+      </div>
+
+      <div class="about-stats reveal delay-4">
+        <div>
+          <div class="stat-num">500<span>+</span></div>
+          <div class="stat-label">Clientes Atendidos</div>
+        </div>
+        <div>
+          <div class="stat-num">3<span>+</span></div>
+          <div class="stat-label">Anos de Experiência</div>
+        </div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">Técnicas Especializadas</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     SERVICES
+══════════════════════════════════ -->
+<section id="servicos" class="services-section" aria-labelledby="servicos-heading">
+  <span class="services-watermark" aria-hidden="true">MASSAGEM</span>
+
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <p class="services-section-label reveal">Serviços</p>
+        <h2 class="services-heading reveal delay-1" id="servicos-heading">
+          Técnicas que<br /><em>transformam</em>
+        </h2>
+      </div>
+      <p class="services-subtext reveal delay-2">
+        Cada sessão é cuidadosamente planejada para atender às suas
+        necessidades específicas, com as melhores técnicas disponíveis.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3 class="service-title">Massagem Relaxante</h3>
+        <p class="service-desc">
+          Técnicas suaves que aliviam o estresse acumulado, reduzem a tensão muscular
+          e promovem um profundo estado de relaxamento e bem-estar.
+        </p>
+        <span class="service-tag">Relaxamento</span>
+      </div>
+
+      <div class="service-card reveal delay-1">
+        <div class="service-num">02</div>
+        <div class="service-icon">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        </div>
+        <h3 class="service-title">Massagem Terapêutica</h3>
+        <p class="service-desc">
+          Focada em áreas específicas de tensão e dor, com manobras direcionadas
+          para tratar disfunções musculares e articulares com precisão.
+        </p>
+        <span class="service-tag">Terapêutico</span>
+      </div>
+
+      <div class="service-card reveal delay-2">
+        <div class="service-num">03</div>
+        <div class="service-icon">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        </div>
+        <h3 class="service-title">Quick Massage</h3>
+        <p class="service-desc">
+          Sessão rápida e eficaz focada em pescoço, ombros e costas.
+          Ideal para o dia a dia corporativo e alívio imediato de tensões.
+        </p>
+        <span class="service-tag">Express</span>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-icon">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3 class="service-title">Drenagem Linfática</h3>
+        <p class="service-desc">
+          Técnica especializada que estimula o sistema linfático, reduz inchaços,
+          combate retenção de líquidos e melhora a imunidade.
+        </p>
+        <span class="service-tag">Estético & Saúde</span>
+      </div>
+
+      <div class="service-card reveal delay-1">
+        <div class="service-num">05</div>
+        <div class="service-icon">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3 class="service-title">Liberação Miofascial</h3>
+        <p class="service-desc">
+          Trabalha a fáscia muscular para aliviar restrições, melhorar a mobilidade
+          e reduzir dores crônicas de forma progressiva e efetiva.
+        </p>
+        <span class="service-tag">Especializado</span>
+      </div>
+
+      <div class="service-card reveal delay-2">
+        <div class="service-num">06</div>
+        <div class="service-icon">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <h3 class="service-title">Shiatsu</h3>
+        <p class="service-desc">
+          Técnica japonesa milenar que equilibra a energia vital através de pressão
+          em pontos estratégicos, harmonizando corpo e mente.
+        </p>
+        <span class="service-tag">Oriental</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     BENEFITS
+══════════════════════════════════ -->
+<section id="beneficios" class="benefits-section" aria-labelledby="beneficios-heading">
+  <div class="benefits-inner">
+
+    <div class="benefits-content">
+      <p class="section-label reveal">Por que massoterapia?</p>
+      <h2 class="benefits-heading reveal delay-1" id="beneficios-heading">
+        Transforme sua<br /><em>qualidade de vida</em>
+      </h2>
+
+      <div class="benefit-list">
+        <div class="benefit-item reveal">
+          <span class="benefit-num">01</span>
+          <div>
+            <h3 class="benefit-title">Redução do Estresse</h3>
+            <p class="benefit-desc">
+              Diminui os níveis de cortisol e promove a liberação de serotonina,
+              proporcionando bem-estar mental e emocional duradouro.
             </p>
-            <div class="servicos-grid">
-                <div class="servico-card">
-                    <div class="servico-icon">🌸</div>
-                    <h3>Massagem Relaxante</h3>
-                    <p>
-                        Técnicas suaves que proporcionam relaxamento profundo, 
-                        aliviando tensões e promovendo sensação de bem-estar e tranquilidade.
-                    </p>
-                </div>
-                <div class="servico-card">
-                    <div class="servico-icon">💪</div>
-                    <h3>Massagem Terapêutica</h3>
-                    <p>
-                        Tratamento focado em pontos específicos de tensão e dor, 
-                        utilizando técnicas para aliviar desconfortos musculares.
-                    </p>
-                </div>
-                <div class="servico-card">
-                  <div class="servico-icon">🛏️</div>
-<h3>Quick Massage</h3>
-<p>
-    Técnica de massagem rápida realizada em cadeira ergonômica, focada em 
-    aliviar tensões musculares, reduzir o estresse e melhorar a circulação. 
-    Ideal para quem busca relaxamento e bem-estar em poucos minutos, sem a 
-    necessidade de troca de roupa.
-</p>
-                </div>
-                <div class="servico-card">
-                    <div class="servico-icon">💧</div>
-                    <h3>Drenagem Linfática</h3>
-                    <p>
-                        Técnica que estimula o sistema linfático, reduzindo 
-                        retenção de líquidos e eliminando toxinas do organismo.
-                    </p>
-                </div>
-                <div class="servico-card">
-                    <div class="servico-icon">🎯</div>
-                    <h3>Liberação Miofascial</h3>
-                    <p>
-                        Trabalho profundo nas fáscias musculares, liberando 
-                        aderências e restaurando a mobilidade dos tecidos.
-                    </p>
-                </div>
-                <div class="servico-card">
-                    <div class="servico-icon">🈶</div>
-<h3>Shiatsu</h3>
-<p>
-Massagem terapêutica de origem japonesa que utiliza pressão com os dedos
-em pontos específicos do corpo, promovendo equilíbrio energético,
-alívio de dores, relaxamento profundo e bem-estar físico e emocional.
-</p>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Benefícios Section -->
-    <section class="beneficios section" id="beneficios">
-        <div class="container">
-            <div class="beneficios-container">
-                <div class="beneficios-content">
-                    <h2>Benefícios da Massagem</h2>
-                    <p>
-                        A Massagem oferece diversos benefícios comprovados para 
-                        a saúde física e mental. Confira como nossas técnicas podem 
-                        transformar sua qualidade de vida.
-                    </p>
-                    <div class="beneficios-lista">
-                        <div class="beneficio-item">
-                            <div class="beneficio-number">1</div>
-                            <div class="beneficio-text">
-                                <h4>Redução do Estresse</h4>
-                                <p>Diminui os níveis de cortisol e promove sensação de calma e relaxamento.</p>
-                            </div>
-                        </div>
-                        <div class="beneficio-item">
-                            <div class="beneficio-number">2</div>
-                            <div class="beneficio-text">
-                                <h4>Alívio de Dores Musculares</h4>
-                                <p>Tratamento eficaz para tensões, contraturas e dores crônicas.</p>
-                            </div>
-                        </div>
-                        <div class="beneficio-item">
-                            <div class="beneficio-number">3</div>
-                            <div class="beneficio-text">
-                                <h4>Melhora da Circulação</h4>
-                                <p>Estimula o fluxo sanguíneo, oxigenando os tecidos e órgãos.</p>
-                            </div>
-                        </div>
-                        <div class="beneficio-item">
-                            <div class="beneficio-number">4</div>
-                            <div class="beneficio-text">
-                                <h4>Bem-estar Físico e Mental</h4>
-                                <p>Equilíbrio entre corpo e mente, melhorando a qualidade de vida.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="beneficios-image">
-                    <div class="beneficios-image-wrapper">
-                        <img
-src="images/ChatGPT Image 27 de jan. de 2026, 18_01_00.png"
-alt="Massoterapia e bem-estar"
-class="hero-image-photo"
-/>
-                
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Depoimentos Section -->
-    <section class="depoimentos section" id="depoimentos">
-        <div class="container">
-            <h2 class="section-title">O Que Os Clientes Dizem</h2>
-            <p class="section-subtitle">
-                Confira os depoimentos de quem já experimentou meu serviço
+        <div class="benefit-item reveal delay-1">
+          <span class="benefit-num">02</span>
+          <div>
+            <h3 class="benefit-title">Alívio de Dores Musculares</h3>
+            <p class="benefit-desc">
+              Relaxa a musculatura contraída, melhora a flexibilidade e alivia
+              dores crônicas com resultados progressivos e duradouros.
             </p>
-            <div class="depoimentos-grid">
-                <div class="depoimento-card">
-                    <div class="depoimento-avatar">M</div>
-                    <div class="depoimento-stars">★★★★★</div>
-                    <p class="depoimento-text">
-                        "Encontrei o cuidado que precisava. As sessões de 
-                        massagem relaxante me ajudaram muito a lidar com o estresse 
-                        do dia a dia. Super recomendo!"
-                    </p>
-                    <h4 class="depoimento-nome">Marina Oliveira</h4>
-                    <span class="depoimento-info">Cliente há 6 meses</span>
-                </div>
-                <div class="depoimento-card">
-                    <div class="depoimento-avatar">R</div>
-                    <div class="depoimento-stars">★★★★★</div>
-                    <p class="depoimento-text">
-                        "Sofria com dores nas costas há anos. Depois de iniciar o 
-                        tratamento com massagem terapêutica, minha qualidade de vida 
-                        melhorou muito. Profissional incrível!"
-                    </p>
-                    <h4 class="depoimento-nome">Roberto Santos</h4>
-                    <span class="depoimento-info">Cliente há 1 ano</span>
-                </div>
-                <div class="depoimento-card">
-                    <div class="depoimento-avatar">C</div>
-                    <div class="depoimento-stars">★★★★★</div>
-                    <p class="depoimento-text">
-                        "A drenagem linfática fez toda diferença no meu pós-operatório. 
-                        Atendimento humanizado e ambiente muito acolhedor. Gratidão!"
-                    </p>
-                    <h4 class="depoimento-nome">Carla Ferreira</h4>
-                    <span class="depoimento-info">Cliente há 3 meses</span>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Contato Section -->
-    <section class="contato section" id="contato">
-        <div class="container">
-            <div class="contato-container">
-                <div class="contato-content">
-                    <h2>Entre em Contato</h2>
-                    <p>
-                        Estou pronta para atender você! Entre em contato para 
-                        agendar sua sessão ou tirar dúvidas.
-                    </p>
-                    <div class="contato-info">
-                        <div class="contato-item">
-                            <div class="contato-icon">📱</div>
-                            <div class="contato-item-content">
-                                <h4>WhatsApp</h4>
-                                <p>(41) 98789-0037</p>
-                            </div>
-                        </div>
-                        <div class="contato-item">
-                           <div class="contato-icon">📷</div>
-                            <div class="contato-item-content">
-                                <h4>Instagram</h4>
-                                <p>@luoda38</p>
-                            </div>
-                        </div>
-                        <div class="contato-item">
-                            <div class="contato-icon">📍</div>
-                            <div class="contato-item-content">
-                                <h4>Localização</h4>
-                                <p>Curitiba - Paraná</p>
-                                <p>Atendimento a Domicílio</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contato-cta">
-                    <h3>Agende Sua Sessão</h3>
-                    <p>
-                        Clique no botão abaixo e fale diretamente comigo pelo 
-                        WhatsApp. Resposta rápida garantida!
-                    </p>
-                    <a href="https://wa.me/5541987890037?text=Olá! Gostaria de agendar uma sessão de massagem." class="btn btn-whatsapp">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                        </svg>
-                        Chamar no WhatsApp
-                    </a>
-                </div>
-            </div>
+        <div class="benefit-item reveal delay-2">
+          <span class="benefit-num">03</span>
+          <div>
+            <h3 class="benefit-title">Melhora da Circulação</h3>
+            <p class="benefit-desc">
+              Estimula a circulação sanguínea e linfática, melhorando o transporte
+              de nutrientes e a eliminação de toxinas do organismo.
+            </p>
+          </div>
         </div>
-    </section>
+        <div class="benefit-item reveal delay-3">
+          <span class="benefit-num">04</span>
+          <div>
+            <h3 class="benefit-title">Bem-estar Físico e Mental</h3>
+            <p class="benefit-desc">
+              Promove equilíbrio entre corpo e mente, melhorando o sono,
+              a disposição e a qualidade de vida de forma global.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-brand">
-<a href="#inicio" class="logo">
-                <img src="images/logo.png" alt="LuOda Massoterapia">
-            </a>
-                    <p>
-                        Cuidando do seu bem-estar com carinho e profissionalismo. 
-                        Agende sua sessão e descubra os benefícios da massoterapia 
-                        para sua saúde física e mental.
-                    </p>
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/luoda38?igsh=c2NiZ2M3N3U4b3Mx" aria-label="Instagram">📷</a>
-                        <a href="https://wa.me/5541987890037?text=Olá! Gostaria de agendar uma sessão de massagem." aria-label="WhatsApp">💬</a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Início</a></li>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#beneficios">Benefícios</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#servicos">Massagem Relaxante</a></li>
-                        <li><a href="#servicos">Massagem Terapêutica</a></li>
-                        <li><a href="#servicos">Massagem Desportiva</a></li>
-                        <li><a href="#servicos">Drenagem Linfática</a></li>
-                        <li><a href="#servicos">Liberação Miofascial</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-links">
-                <a href="https://wa.me/5541987377232?text=Olá! Vim pelo Site da LuOda Massoterapeuta, gostaria de saber sobre seus serviços de Desenvolvedor">
-    <p>© 2026 Feito por Guilherme Massayuki Oda – Todos os direitos reservados</p>
+    <div class="benefits-image-col reveal delay-2">
+      <img
+        src="images/ChatGPT Image 27 de jan. de 2026, 18_01_00.png"
+        alt="Benefícios da massoterapia"
+        class="benefits-img"
+      />
+      <div class="benefits-badge">
+        <div class="badge-num">5.0</div>
+        <div class="badge-stars">★★★★★</div>
+        <div class="badge-note">Avaliação média dos clientes</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════ -->
+<section id="depoimentos" class="testimonials-section" aria-labelledby="depoimentos-heading">
+  <div class="testimonials-inner">
+
+    <div class="testimonials-header">
+      <p class="section-label reveal" style="justify-content:center;">Depoimentos</p>
+      <h2 class="testimonials-heading reveal delay-1" id="depoimentos-heading">
+        O que nossos clientes<br /><em>dizem</em>
+      </h2>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="tcard reveal">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">
+          "As sessões com a Lu transformaram minha qualidade de vida.
+          As dores nas costas que me acompanhavam há anos desapareceram
+          progressivamente após algumas sessões."
+        </p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">M</div>
+          <div>
+            <div class="tcard-name">Marina Oliveira</div>
+            <div class="tcard-tenure">Cliente há 6 meses</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal delay-1">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">
+          "Profissionalismo e cuidado em cada sessão. A Lu tem um dom especial
+          para identificar os pontos de tensão e aplicar exatamente a técnica
+          certa para cada situação."
+        </p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">R</div>
+          <div>
+            <div class="tcard-name">Roberto Santos</div>
+            <div class="tcard-tenure">Cliente há 1 ano</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal delay-2">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">
+          "A drenagem linfática foi essencial para minha recuperação pós-operatória.
+          A Lu me acompanhou com dedicação e os resultados superaram
+          todas as minhas expectativas."
+        </p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">C</div>
+          <div>
+            <div class="tcard-name">Carla Ferreira</div>
+            <div class="tcard-tenure">Cliente há 3 meses</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     CONTACT
+══════════════════════════════════ -->
+<section id="contato" class="contact-section" aria-labelledby="contato-heading">
+  <div class="contact-orb" style="width:500px;height:500px;top:-120px;right:-80px;"></div>
+  <div class="contact-orb" style="width:280px;height:280px;bottom:-60px;left:4%;"></div>
+
+  <div class="contact-inner">
+
+    <div>
+      <p class="contact-section-label reveal">Agende Agora</p>
+      <h2 class="contact-heading reveal delay-1" id="contato-heading">
+        Comece sua<br />jornada de<br /><em>bem-estar hoje</em>
+      </h2>
+      <p class="contact-text reveal delay-2">
+        Entre em contato pelo WhatsApp ou Instagram para agendar sua sessão
+        personalizada. Atendimento em domicílio disponível em Curitiba — PR.
+      </p>
+      <div class="contact-btns reveal delay-3">
+        <a
+          href="https://wa.me/5541987890037?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o."
+          target="_blank" rel="noopener noreferrer"
+          class="btn-whatsapp" aria-label="Agendar via WhatsApp"
+        >
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a
+          href="https://instagram.com/luoda38"
+          target="_blank" rel="noopener noreferrer"
+          class="btn-instagram" aria-label="Instagram @luoda38"
+        >
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @luoda38
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-cards reveal delay-2">
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.75a16 16 0 006.29 6.29l.94-.94a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-lbl">WhatsApp</div>
+          <div class="contact-card-val">(41) 98789-0037</div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#c5933a" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-lbl">Instagram</div>
+          <div class="contact-card-val">@luoda38</div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-lbl">Localização</div>
+          <div class="contact-card-val">Curitiba — Paraná</div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c5933a" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-lbl">Modalidade</div>
+          <div class="contact-card-val">Atendimento em Domicílio</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <img src="images/logo.png" alt="LuOda Massoterapeuta" class="footer-logo" />
+    <nav class="footer-links" aria-label="Links do rodapé">
+      <a href="#sobre"       class="footer-link">Sobre</a>
+      <a href="#servicos"    class="footer-link">Serviços</a>
+      <a href="#beneficios"  class="footer-link">Benefícios</a>
+      <a href="#depoimentos" class="footer-link">Depoimentos</a>
+      <a href="#contato"     class="footer-link">Contato</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 LuOda Massoterapeuta · Todos os direitos reservados</p>
+    <a
+      href="https://wa.me/5541988826890"
+      target="_blank" rel="noopener noreferrer"
+      class="footer-dev"
+    >Dev by Guilherme Oda</a>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════
+     FLOATING WHATSAPP
+══════════════════════════════════ -->
+<a
+  href="https://wa.me/5541987890037?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o."
+  target="_blank" rel="noopener noreferrer"
+  class="float-wa" aria-label="Agendar via WhatsApp"
+>
+  <svg width="23" height="23" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
-            </div>
-        </div>
-    </footer>
 
-    <!-- Botão WhatsApp Flutuante -->
-    <a href="https://wa.me/5541987890037?text=Olá! Gostaria de saber mais sobre os serviços de massagem." 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       aria-label="Contato via WhatsApp">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-    </a>
 
-    <!-- JavaScript -->
-    <script>
-        // ===== Menu Mobile Toggle =====
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+<script>
+</script>
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+<!-- Chat widget -->
+<div id="chatWidget" class="chat-widget" aria-live="polite">
+  <button id="chatToggle" class="chat-toggle" aria-label="Abrir chat">Chat</button>
+  <div id="chatPanel" class="chat-panel" hidden>
+    <div class="chat-header">Assistente LuOda ✦ IA</div>
+    <div id="chatMessages" class="chat-messages" role="log" aria-live="polite"></div>
+    <form id="chatForm" class="chat-form">
+      <input id="chatInput" type="text" placeholder="Escreva sua pergunta..." autocomplete="off" required />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script src="chat.js"></script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 55);
+  }, { passive: true });
+
+  /* Mobile menu */
+  const toggle    = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  toggle.addEventListener('click', () => {
+    const open = toggle.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    mobileMenu.setAttribute('aria-hidden', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* Scroll reveal */
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -36px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* Smooth anchor scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - 76,
+          behavior: 'smooth'
         });
+      }
+    });
+  });
+</script>
 
-        // Fecha o menu ao clicar em um link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // ===== Header com sombra no scroll =====
-        const header = document.getElementById('header');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-            }
-        });
-
-        // ===== Animação de scroll suave para links internos =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // ===== Animação de entrada dos elementos =====
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Aplica a animação aos cards de serviços e depoimentos
-        document.querySelectorAll('.servico-card, .depoimento-card, .beneficio-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
