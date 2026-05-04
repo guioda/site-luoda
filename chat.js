@@ -5,6 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('chatInput');
   const messages = document.getElementById('chatMessages');
 
+  // ── Configure após deploy do Cloudflare Worker (veja worker.js) ──
+  const AI_ENDPOINT = 'https://super-night-79d0.guilhermeoda25.workers.dev';
+  // ─────────────────────────────────────────────────────────────────
+
+  const history = [];
+  let isLoading = false;
+
   function scrollBottom() { messages.scrollTop = messages.scrollHeight; }
 
   toggle.addEventListener('click', () => {
@@ -19,40 +26,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function appendMessage(text, who='bot'){
+  function appendMessage(text, who = 'bot') {
     const el = document.createElement('div');
     el.className = 'msg ' + (who === 'user' ? 'user' : 'bot');
     el.textContent = text;
     messages.appendChild(el);
     scrollBottom();
+    return el;
   }
 
-  function botReply(userText){
-    const t = userText.toLowerCase();
-    // regras simples de resposta
-    if (/hor[ií]rio|quando|agenda/.test(t)) return 'Atendemos por agendamento. Quer que eu envie o link do WhatsApp para agendar?';
-    if (/pre[çc]o|valor|quanto/.test(t)) return 'Os valores variam conforme a técnica. Quer que eu descreva os serviços e preços?';
-    if (/drenagem|linf[aã]tica/.test(t)) return 'A drenagem linfática é indicada para reduzir retenção e pós-operatório. Deseja saber duração e preço?';
-    if (/relaxante|massagem relaxante/.test(t)) return 'A massagem relaxante foca em bem-estar e redução de estresse. Posso explicar a sessão típica.';
-    if (/shiatsu|miofascial|terap[eê]utica/.test(t)) return 'Posso explicar cada técnica. Qual delas você quer conhecer primeiro?';
-    if (/oi|ol[aá]|olá|bom dia|boa tarde|boa noite/.test(t)) return 'Olá! Como posso ajudar você hoje?';
-    if (/contato|whatsapp|instagram/.test(t)) return 'Você pode agendar pelo WhatsApp: https://wa.me/5541987890037';
-    return 'Desculpe, não entendi. Pode reformular? Posso ajudar com agendamento pelo WhatsApp.';
+  function showTyping() {
+    const el = document.createElement('div');
+    el.className = 'msg bot typing';
+    el.id = 'typingIndicator';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    messages.appendChild(el);
+    scrollBottom();
   }
 
-  form.addEventListener('submit', (e) =>{
+  function hideTyping() {
+    document.getElementById('typingIndicator')?.remove();
+  }
+
+  async function askAI(userText) {
+    const res = await fetch(AI_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userText, history }),
+    });
+
+    if (!res.ok) throw new Error('status ' + res.status);
+
+    const data = await res.json();
+    const reply = data.reply;
+
+    history.push({ role: 'user', content: userText });
+    history.push({ role: 'assistant', content: reply });
+    if (history.length > 10) history.splice(0, history.length - 10);
+
+    return reply;
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (isLoading) return;
     const text = input.value.trim();
     if (!text) return;
+
     appendMessage(text, 'user');
     input.value = '';
-    // simular digitação
-    setTimeout(() => {
-      const reply = botReply(text);
+    isLoading = true;
+    input.disabled = true;
+    showTyping();
+
+    try {
+      const reply = await askAI(text);
+      hideTyping();
       appendMessage(reply, 'bot');
-    }, 600 + Math.random() * 400);
+    } catch {
+      hideTyping();
+      appendMessage('Tive um problema ao responder. Fale comigo pelo WhatsApp: wa.me/5541987890037', 'bot');
+    } finally {
+      isLoading = false;
+      input.disabled = false;
+      input.focus();
+    }
   });
 
-  // initial greeting
-  appendMessage('Olá! Eu sou um chat automático. Pergunte sobre serviços ou agendamento.');
+  appendMessage('Olá! Sou a assistente virtual da LuOda. Posso ajudar com informações sobre serviços e agendamentos. 😊');
 });
