@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('chatToggle');
-  const panel = document.getElementById('chatPanel');
-  const form = document.getElementById('chatForm');
-  const input = document.getElementById('chatInput');
+  const widget  = document.getElementById('chatWidget');
+  const toggle  = document.getElementById('chatToggle');
+  const form    = document.getElementById('chatForm');
+  const input   = document.getElementById('chatInput');
   const messages = document.getElementById('chatMessages');
 
-  // ── Configure após deploy do Cloudflare Worker (veja worker.js) ──
   const AI_ENDPOINT = 'https://super-night-79d0.guilhermeoda25.workers.dev';
-  // ─────────────────────────────────────────────────────────────────
 
   const history = [];
   let isLoading = false;
@@ -15,20 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollBottom() { messages.scrollTop = messages.scrollHeight; }
 
   toggle.addEventListener('click', () => {
-    const open = panel.hasAttribute('hidden');
-    if (open) {
-      panel.removeAttribute('hidden');
-      toggle.textContent = 'Fechar';
-      input.focus();
-    } else {
-      panel.setAttribute('hidden', '');
-      toggle.textContent = 'Chat';
-    }
+    const opening = !widget.classList.contains('is-open');
+    widget.classList.toggle('is-open', opening);
+    toggle.setAttribute('aria-label', opening ? 'Fechar chat' : 'Abrir chat');
+    if (opening) input.focus();
   });
 
   function appendMessage(text, who = 'bot') {
     const el = document.createElement('div');
-    el.className = 'msg ' + (who === 'user' ? 'user' : 'bot');
+    el.className = 'msg ' + who;
     el.textContent = text;
     messages.appendChild(el);
     scrollBottom();
@@ -55,7 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
       body: JSON.stringify({ message: userText, history }),
     });
 
-    if (!res.ok) throw new Error('status ' + res.status);
+    if (!res.ok) {
+      const err = await res.text().catch(() => res.status);
+      console.error('Worker error:', err);
+      throw new Error(String(err));
+    }
 
     const data = await res.json();
     const reply = data.reply;
@@ -77,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     input.value = '';
     isLoading = true;
     input.disabled = true;
+    form.querySelector('button').disabled = true;
     showTyping();
 
     try {
@@ -85,13 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
       appendMessage(reply, 'bot');
     } catch {
       hideTyping();
-      appendMessage('Tive um problema ao responder. Fale comigo pelo WhatsApp: wa.me/5541987890037', 'bot');
+      appendMessage('Não consegui responder agora. Entre em contato pelo WhatsApp 😊', 'bot');
     } finally {
       isLoading = false;
       input.disabled = false;
+      form.querySelector('button').disabled = false;
       input.focus();
     }
   });
 
-  appendMessage('Olá! Sou a assistente virtual da LuOda. Posso ajudar com informações sobre serviços e agendamentos. 😊');
+  appendMessage('Olá! Sou a assistente virtual da LuOda. Como posso ajudar você hoje? 🌿');
 });
